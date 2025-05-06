@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <!-- Tambahkan Judul WEB -->
+
+    <title>LOGIN</title>
+
+    <!-- Tambahkan Bootstrap CSS -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <style>
+
+        body {
+
+            background-color: #b46464;
+
+        }
+
+        .centered-content {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            min-height: 100vh;
+
+        }
+
+        .login-box {
+
+            background-color: rgb(250, 248, 248);
+
+            padding: 20px;
+
+            border-radius: 10px;
+
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+
+        }
+
+        .logo-img {
+
+            max-width: 100px;
+
+            margin: 0 auto;
+
+            display: block;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container centered-content">
+
+        <div class="col-md-4">
+
+            <div class="login-box">
+
+                <h2 class="text-center">Welcome</h2>
+
+                <form id="loginForm">
+
+                    <div class="mb-3">
+
+                        <label for="username" class="form-label">Username</label>
+
+                        <input type="text" class="form-control" id="username" placeholder="Masukkan username">
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label for ="password" class="form-label">Password</label>
+
+                        <input type="password" class="form-control" id="password" placeholder="Masukkan password">
+
+                    </div>
+
+                    <button type="submit" class="btn btn-outline-warning w-100">Masuk</button>
+                    <p id="message"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+
+        // Data pengguna yang tersimpan (contoh sederhana)
+
+        const userData= [
+{password: 'admin123'},
+
+];;
+
+        // Tangani login form
+        const loginForm = document.getElementById('loginForm');
+
+loginForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const password = document.getElementById('password').value;
+  const message = document.getElementById('message');
+
+  // Cek apakah password cocok dengan salah satu yang terdaftar
+  const isValid = userData.some(user => user.password === password);
+
+  if (isValid) {
+    message.textContent = 'Login berhasil! Mengarahkan...';
+    message.style.color = 'green';
+
+    // Redirect setelah 2 detik
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 2000);
+  } else {
+    message.textContent = 'Password salah!';
+    message.style.color = 'red';
+  }
+});
+
+    </script>
+
+</body>
+
+</html>
